@@ -23,7 +23,7 @@ function start()
             $addBad++;
             continue;
         }
-        else if($err = chkSize(3000,$files['size'][$i])){
+        else if($err = chkSize(150000,$files['size'][$i])){
             printErrors($name, $err);
             $addBad++;
             continue;
@@ -35,6 +35,7 @@ function start()
 //        var_dump($new_name);
 
         //перемещаем из временной папки
+
         if(move_uploaded_file($files['tmp_name'][$i], "img/$new_name")){
            echo "Файл  $name успешно загружен<br>";
            $addGood++;
@@ -46,6 +47,7 @@ function start()
 
     echo "Успешно загружено $addGood из $my_count<br>";
     echo "Ошибка при загрузке в $addBad из $my_count";
+    return 0;
 }
 
 function chkType($eth){
@@ -85,6 +87,7 @@ function printErrors($nameFile, $err) {
             echo "Недопустимый формат $nameFile<br>";
             break;
     }
+    return 0;
 }
 
 
